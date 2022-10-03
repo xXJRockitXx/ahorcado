@@ -1,26 +1,85 @@
-.lienzo {
-    /* box-sizing: border-box;
-    float: left;
-    width: 50%;
-    padding: 10px; */
+main {
+    height: 100%;
+    display: inline;
+}
 
-    /* box-sizing: border-box;
+.ahorcado {
     width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center; */
-
-    /* width: 50%; */
-    /* display: grid;
-    place-items: center;
-    background-color: blue; */
-
-    width: 50%;
-    height: 80%;
+    height: 55%;
     margin: 0 auto;
+    /* border: 1px solid red; */
 }
 
 .lienzo {
     width: 100%;
     height: 100%;
+}
+
+.letras {
+    width: 100%;
+    /* background-color: red; */
+    display: inline-block;
+    text-align: center;
+}
+
+.caracter {
+    border-radius: 5px;
+    background-color: transparent;
+    border: 3px solid #5CB8E4;
+    border-top: transparent;
+    border-right: transparent;
+    border-left: transparent;
+    width: 100%;
+    text-align: center;
+    margin-right: 10px;
+    pointer-events: none; 
+}
+
+.entrada {
+    /* width: 0px; */
+    display: block;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    caret-color: transparent;
+}
+
+.botones {
+    margin: 20px;
+    display: grid;
+    place-items: center;
+}
+
+.nuevo-juego {
+    background-color: #8758FF;
+    border-radius: 10px;
+    border: none;
+    margin: 10px;
+}
+
+.nuevo-juego a {
+    text-decoration: none;
+}
+
+.nuevo-juego:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 200ms;
+}
+
+.desistir {
+    background-color: #F2F2F2;
+    border-radius: 10px;
+    border: none;
+}
+
+.desistir a {
+    text-decoration: none;
+    color: black;
+}
+
+.desistir:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 200ms;
 }

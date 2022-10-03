@@ -13,6 +13,8 @@ body {
 }
 
 .icono {
+    display: block;
+    text-align: left;
     max-width: 100%;
     height: auto;
 }
@@ -85,7 +87,6 @@ main {
 }
 
 .palabra {
-    color: black;
     background-color: #F2F2F2;
     border-radius: 10px;
     border: none;

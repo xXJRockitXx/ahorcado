@@ -73,40 +73,17 @@ function dibujarHorca(intento) {
     return intento + 1;
 }
 
-/* var intentos = 0;
-
-intentos = dibujarHorca(intentos); */
-
-/* // Dibujamos una linea horizontal
-dibujarLinea(40, pantalla.height - 40, pantalla.width - 40, pantalla.height - 40);
-// Dibujamos una linea vertical
-dibujarLinea(80, pantalla.height - 20, 80, 80);
-// Dibujamos otra linea horizontal
-dibujarLinea(80, 80, pantalla.width / 2, 80);
-// Dibujamos otra linea vertical
-dibujarLinea(pantalla.width / 2, 80, pantalla.width / 2, pantalla.height / 2 - 80);
-// Dibujamos un circulo
-dibujarCirculo(pantalla.width / 2, pantalla.height / 2 - 45, 35);
-// Dibujamos otra linea vertical
-dibujarLinea(pantalla.width / 2, pantalla.height / 2 - 10, pantalla.width / 2, pantalla.height - 120);
-// Dibujamos una linea diagonal
-dibujarLinea(pantalla.width / 2, pantalla.height - 120, pantalla.width / 2.3, pantalla.height - 100);
-// Dibujamos una linea diagonal
-dibujarLinea(pantalla.width / 2, pantalla.height - 120, pantalla.width / (1.8), pantalla.height - 100);
-// Dibujamos otra linea diagonal
-dibujarLinea(pantalla.width / 2, pantalla.height / 2, pantalla.width / 2.3, pantalla.height / 1.8);
-// Dibujamos otra linea diagonal
-dibujarLinea(pantalla.width / 2, pantalla.height / 2, pantalla.width / 1.8, pantalla.height / 1.8); */
-
 /* ------------------------------------------------------------------ */
-
 var container = document.querySelector(".letras");
 var entrada = document.querySelector(".entrada");
+var errores = document.querySelector(".errores");
+
 entrada.focus();
 
 var palabras = [];
 var palabraEscogida = "";
-var letrasDescubiertas = "";
+var indexes = [];
+var letrasErroneas = "";
 
 palabras.push("HTML");
 palabras.push("JAVASCRIPT");
@@ -121,14 +98,20 @@ function escogerPalabra() {
 }
 
 function mostrarCaracter(caracter) {
+    // Mostraremos los caracteres que se vayan descrubriendo de la palabra secreta
     container.innerHTML = "";
     for (var i = 0; i < palabraEscogida.length; i++) {
         var input = document.createElement("input");
         input.type = "text";
         input.className = "caracter";
 
-        if (palabraEscogida[i] == caracter) {
+        if (indexes.includes(i)) {
             input.style.cssText = "color: #F2F2F2;";
+        }
+
+        else if (palabraEscogida[i] == caracter) {
+            input.style.cssText = "color: #F2F2F2;";
+            indexes.push(i);
         }
 
         else {
@@ -138,12 +121,11 @@ function mostrarCaracter(caracter) {
         input.value = palabraEscogida[i];
         container.appendChild(input);
         input.style.width = input.value.length * 25 + "px";
-
-
     }
 }
 
 function mostrarPistas() {
+    // Mostraremos guiones en base al tamaño de la palabra secreta
     for (var i = 0; i < palabraEscogida.length; i++) {
         var input = document.createElement("input");
         input.type = "text";
@@ -155,21 +137,56 @@ function mostrarPistas() {
     }
 }
 
-escogerPalabra();
-entrada.addEventListener('input', updateValue);
+function verficarGanador() {
+    var img = new Image();
+    img.src = "../imagenes/you_win.jpg";
+
+    if (indexes.length == palabraEscogida.length) {
+        pincel.drawImage(img, 0, 0, pantalla.width, pantalla.height);
+
+        img.onload = function () {
+            pincel.drawImage(img, 0, 0, pantalla.width, pantalla.height);
+        }
+    }
+}
+
+function verficarPerdedor(intentos) {
+    var img = new Image();
+    img.src = "../imagenes/gameover.png";
+
+    if (intentos == 10) {
+        pincel.drawImage(img, 0, 0, pantalla.width, pantalla.height);
+
+        img.onload = function () {
+            pincel.drawImage(img, 0, 0, pantalla.width, pantalla.height);
+        }
+    }
+}
+
 var intentos = 1;
 
+escogerPalabra();
 // Dibujamos la base de la horca
 dibujarLinea(40, pantalla.height - 40, pantalla.width - 40, pantalla.height - 40);
+
+entrada.addEventListener('input', updateValue);
 
 function updateValue(e) {
     if (palabraEscogida.includes(entrada.value.toUpperCase())) {
         mostrarCaracter(entrada.value.toUpperCase());
-        entrada.value = ""
+        verficarGanador();
+    }
+
+    else if (letrasErroneas.includes(entrada.value.toUpperCase())) {
+        errores.value += "";
     }
 
     else {
+        letrasErroneas += entrada.value.toUpperCase();
+        errores.value += entrada.value.toUpperCase() + " - ";
         intentos = dibujarHorca(intentos);
-        entrada.value = ""
+        verficarPerdedor(intentos);
     }
+
+    entrada.value = ""
 }

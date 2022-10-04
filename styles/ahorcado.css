@@ -35,13 +35,27 @@ main {
     pointer-events: none; 
 }
 
+.entradas {
+    display: grid;
+    place-items: center;
+    /* border: 1px solid red; */
+    text-align: center;
+}
 .entrada {
-    /* width: 0px; */
-    display: block;
     background-color: transparent;
     border: none;
     outline: none;
     caret-color: transparent;
+    color: transparent;
+}
+
+.errores {
+    text-align: center;
+    color: #950101;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    pointer-events: none; 
 }
 
 .botones {

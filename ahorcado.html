@@ -25,15 +25,15 @@
             </canvas>
         </div>
 
-        <div class="entradas">
-            <input type="text" class="entrada" autofocus>
+        <div class="letras">
+
         </div>
 
-        <div class="letras">
-            
+        <div class="entradas">
+            <input type="text" class="entrada" onkeypress="return (event.charCode >= 65 && event.charCode <= 90)"
+                autofocus>
+            <input type="text" class="errores">
         </div>
-        <!-- <input type="text" class="palabras"> -->
-        <!-- <label>hola</label> -->
 
         <div class="botones">
             <button class="nuevo-juego"><a href="ahorcado.html">Nuevo Juego</a></button>

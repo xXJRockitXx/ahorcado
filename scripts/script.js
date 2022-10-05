@@ -83,7 +83,7 @@ entrada.focus();
 var palabras = [];
 var palabraEscogida = "";
 var indexes = [];
-var letrasErroneas = "";
+var letrasErroneas = [];
 
 palabras.push("HTML");
 palabras.push("JAVASCRIPT");
@@ -147,6 +147,8 @@ function verficarGanador() {
         img.onload = function () {
             pincel.drawImage(img, 0, 0, pantalla.width, pantalla.height);
         }
+
+        entrada.disabled = true;
     }
 }
 
@@ -160,6 +162,8 @@ function verficarPerdedor(intentos) {
         img.onload = function () {
             pincel.drawImage(img, 0, 0, pantalla.width, pantalla.height);
         }
+
+        entrada.disabled = true;
     }
 }
 
@@ -182,11 +186,11 @@ function updateValue(e) {
     }
 
     else {
-        letrasErroneas += entrada.value.toUpperCase();
-        errores.value += entrada.value.toUpperCase() + " - ";
+        letrasErroneas.push(entrada.value);
+        errores.value += letrasErroneas.at(-1) + " - ";
         intentos = dibujarHorca(intentos);
         verficarPerdedor(intentos);
     }
 
-    entrada.value = ""
+    entrada.value = ""; 
 }

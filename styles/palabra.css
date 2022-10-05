@@ -1,0 +1,53 @@
+.nueva-palabra {
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.nueva {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.nueva::placeholder {
+    color: #F2F2F2;
+}
+
+.nueva:focus::placeholder {
+    color: transparent;
+}
+
+.guardar {
+    background-color: #8758FF;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 10px;
+} 
+
+.guardar:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 200ms;
+}
+
+.guardar a {
+    text-decoration: none;
+}
+
+.cancelar {
+    background-color: #F2F2F2;
+    border-radius: 10px;
+    border: none;
+}
+
+.cancelar:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 200ms;
+}
+
+.cancelar a {
+    text-decoration: none;
+    color: black;
+}

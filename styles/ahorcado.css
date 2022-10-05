@@ -64,6 +64,10 @@ main {
     place-items: center;
 }
 
+.acciones {
+    margin: 20px;
+}
+
 .nuevo-juego {
     background-color: #8758FF;
     border-radius: 10px;

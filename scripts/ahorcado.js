@@ -74,12 +74,15 @@ function dibujarHorca(intento) {
 }
 
 /* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
 var container = document.querySelector(".letras");
 var entrada = document.querySelector(".entrada");
 var errores = document.querySelector(".errores");
 
 entrada.focus();
 
+var palabraNueva;
 var palabras = [];
 var palabraEscogida = "";
 var indexes = [];
@@ -91,7 +94,13 @@ palabras.push("CANVAS");
 palabras.push("ALURA");
 palabras.push("CHALLENGE");
 
+if (document.cookie) {
+    // Verificamos si no hay nueva palabra ingresada
+    palabras.push(document.cookie);
+}
+
 function escogerPalabra() {
+    // Elegimos una palabra al azar
     var x = Math.floor(Math.random() * palabras.length);
     palabraEscogida = palabras[x];
     mostrarPistas();
@@ -176,6 +185,10 @@ dibujarLinea(40, pantalla.height - 40, pantalla.width - 40, pantalla.height - 40
 entrada.addEventListener('input', updateValue);
 
 function updateValue(e) {
+    /* Cada que se ingrese algo en el input, estaremos verificando 3 casos:
+    Si la palabra elegida al azar incluye una de las letras ingresadas
+    la mostramos; si es errorea la mostramos en rojo y la agregamos un array de
+    letras erroneas; si una letra erronea está dentro de ese array, no se muestra */
     if (palabraEscogida.includes(entrada.value.toUpperCase())) {
         mostrarCaracter(entrada.value.toUpperCase());
         verficarGanador();
@@ -192,5 +205,5 @@ function updateValue(e) {
         verficarPerdedor(intentos);
     }
 
-    entrada.value = ""; 
+    entrada.value = "";
 }

@@ -148,7 +148,7 @@ function mostrarPistas() {
 
 function verficarGanador() {
     var img = new Image();
-    img.src = "../imagenes/you_win.jpg";
+    img.src = "./imagenes/you_win.jpg";
 
     if (indexes.length == palabraEscogida.length) {
         pincel.drawImage(img, 0, 0, pantalla.width, pantalla.height);
@@ -163,7 +163,7 @@ function verficarGanador() {
 
 function verficarPerdedor(intentos) {
     var img = new Image();
-    img.src = "../imagenes/gameover.png";
+    img.src = "./imagenes/gameover.png";
 
     if (intentos == 10) {
         pincel.drawImage(img, 0, 0, pantalla.width, pantalla.height);

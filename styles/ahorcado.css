@@ -5,7 +5,7 @@ main {
 
 .ahorcado {
     width: 50%;
-    height: 55%;
+    height: 50%;
     margin: 0 auto;
     /* border: 1px solid red; */
 }
@@ -17,7 +17,6 @@ main {
 
 .letras {
     width: 100%;
-    /* background-color: red; */
     display: inline-block;
     text-align: center;
 }
@@ -32,7 +31,7 @@ main {
     width: 100%;
     text-align: center;
     margin-right: 10px;
-    pointer-events: none; 
+    pointer-events: none;
 }
 
 .entradas {
@@ -41,6 +40,7 @@ main {
     /* border: 1px solid red; */
     text-align: center;
 }
+
 .entrada {
     background-color: transparent;
     border: none;
@@ -55,7 +55,7 @@ main {
     background-color: transparent;
     border: none;
     outline: none;
-    pointer-events: none; 
+    pointer-events: none;
 }
 
 .botones {
@@ -100,4 +100,21 @@ main {
     cursor: pointer;
     transform: scale(1.1);
     transition: 200ms;
+}
+
+/* Media Query para dispositivos mas pequeños */
+@media screen and (max-width: 600px) {
+    .ahorcado {
+        width: 90%;
+        height: 50%;
+        margin: 0 auto;
+    }
+
+    .caracter {
+        font-size: 20px;
+    }
+
+    .errores {
+        font-size: 20px;
+    }
 }

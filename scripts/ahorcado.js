@@ -1,8 +1,11 @@
 var pantalla = document.querySelector(".lienzo");
 var pincel = pantalla.getContext("2d");
 
-pantalla.width = screen.width * 0.4;
-pantalla.height = screen.height * 0.5;
+/* pantalla.width = screen.width * 0.5;
+pantalla.height = screen.height * 0.6; */
+
+pantalla.width = window.innerWidth;
+pantalla.height = window.innerHeight;
 
 function dibujarLinea(x1, y1, x2, y2) {
     pincel.lineWidth = 3;
